@@ -1,4 +1,4 @@
-Bijur Lucky Draw Licenses
+Bijur Lucky Draw License
 Copyright (C) 2011 Abdul Bijur Vallarkodath
 
 This program is free software: you can redistribute it and/or modify
