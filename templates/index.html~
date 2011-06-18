@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>The Stoppit challenge</title>
+    <script> 
+      top.location.href='{{auth_url}}';
+    </script> 
+  </head>
+  <body>
+  </body>
+</html>

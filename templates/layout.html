@@ -1,0 +1,47 @@
+<!doctype html>
+<title>Lucky Draw</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='buttonStyle.css') }}">
+<!-- Ignoring javascripts until we need them.
+<script type="text/javascript" src="{{ url_for('static', filename='fbutils.js') }}"></script>  
+
+<script type="text/javascript" src="{{ url_for('static', filename='utils.js') }}"></script>  
+<script type="text/javascript" src="{{ url_for('static', filename='clear-default-text.js') }}"></script>  
+-->
+<script type="text/javascript" src="{{ url_for('static', filename='ralumni.js') }}"></script>
+<div class ="heading">
+  <table style="width:800px">
+    <tr style="align:left;">
+      <td> <img src="{{ url_for('static', filename='logo_home_en.png') }}" /></td>
+      <td style="align:left"> <h1>IESE Alumni Association iPad Giveaway</h1></td>
+    </tr>
+  </table>
+</div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+<div class=right-nav id="winnerslist" >
+  <h4> Winners </h4>
+
+  <ol class="right-nav-list">
+    {% for i in  g.winners %}
+    <li> <a href="mailto:{{ i.email }}">{{ i.name }} </a></li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="top-right">
+  <a href="{{url_for('upload')}}" >Upload Participants List</a>
+</div>
+  {% block body %}{% endblock %}
+
+
+
+<div class=footer>
+
+      <p class=footer>Copyright : Bijur Vallarkodath. Released under GPL v3</p>
+
+</div>
+
+ 
+

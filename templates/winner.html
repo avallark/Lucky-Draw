@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div style="bodymid">
+
+<div class="bodymidcounter" >
+  <span id="clock">&nbsp;</span>
+</div>
+
+</div>
+
+<div class="bodymidwinner" id="winner1" >
+  
+  And the winner is :
+  <h1> {{ name }} </h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+  <form name="play" method=POST >
+    <a href="{{url_for('play')}}" class="buttonEpic button-red"> PLAY AGAIN</a>
+    <a href="{{url_for('index')}}" class="buttonEpic button-green"> RESTART </a>
+  </form>
+
+</div>
+<script>
+
+  function updateClock (){
+  num  = num - 1;
+  var currentTimeString = num;
+  
+  // Update the time display
+  document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+  if (num == 0){
+    e = document.getElementById("clock");
+    e.style.display = 'none'
+    clearInterval(a);
+    document.getElementById("winner1").style.display = 'block'
+    document.getElementById("winnerslist").style.display = 'block'
+  }   
+
+  }
+  
+  document.getElementById("winnerslist").style.display = 'none'
+  
+  timeDisplay = document.createTextNode ( "" );
+  document.getElementById('clock').appendChild ( timeDisplay );
+  a = 0;
+  //alert(2);
+  num = 6;
+  updateClock();
+  //alert(3);
+  a = setInterval('updateClock()',1000);
+  
+</script>
+
+{% endblock %}

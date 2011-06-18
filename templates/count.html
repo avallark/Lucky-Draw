@@ -1,0 +1,90 @@
+<html>
+<head>
+	<LINK REL="StyleSheet" HREF="/stoppit/static/style.css" TYPE="text/css">
+    <LINK REL="StyleSheet" HREF="/stoppit/static/buttonStyle.css" TYPE="text/css">
+	<title>stoPPit</title>
+    <script type="text/javascript" src="/stoppit/static/fbutils.js"></script>  
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script  type="text/javascript">
+function init ( )
+{
+
+  user_id = 0;
+
+  timeDisplay = document.createTextNode ( "" );
+  document.getElementById("clock").appendChild ( timeDisplay );
+  
+  nameDisplay = document.createTextNode ( "" );
+  document.getElementById("displayMessage").appendChild ( nameDisplay );
+      
+  i = 0;
+  bb = 0;
+
+  user_id = 0;
+      
+     FB.init({
+     appId  : '104595322956808',
+     status : true, // check login status
+     cookie : true, // enable cookies to allow the server to access the session
+     xfbml  : true  // parse XFBML
+     });
+     
+     FB.getLoginStatus(function(response) {
+     if (response.session) {
+        // get the uid
+        user_id = response.session.uid;
+        alert(user_id);
+     } else {
+         top.location.href= {{auth_url}}
+         alert(auth_url);
+     }
+     });
+
+     var query = FB.Data.query('select name, uid,email from user where uid={0}',
+     user_id);
+     query.wait(function(rows) {
+     name = rows[0].name;
+     email = rows[0].email;
+     alert(name);
+     });
+
+}
+    </script>
+</head>
+
+<body onload=" init(); updateClock(); bb= setInterval('updateClock()', 10 )"> 
+
+<div id="fb-root"></div>
+
+
+  <div id="message" >
+    <p>{{message}}</p>
+  </div>
+
+  <div id="counter"> 
+    <h2>Stop the counter at 10.00!!<h2/> 
+    <div id="counting">
+      <table><tr>
+        <td><p style="font-size:80px;"> <span id="clock">&nbsp;</span> </p> </td>
+      </tr>
+
+      </table>
+      <br />
+      <br />
+      <table><tr>
+	    <td>
+	      <a href="javascript:restart_clock();" class="buttonEpic button-green" >START</a>
+	    </td>
+        <td> 
+          <a href="javascript:do_submit();" class="buttonEpic button-red" >STOP</a>
+        </td>
+      </tr>
+	</table>
+  </div>
+
+</div>
+<span id="displayMessage">&nbsp;</span>
+
+</body>
+
+</html>

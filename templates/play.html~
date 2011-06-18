@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="bodymid">
+
+<br />
+<br />
+  <form name="play" method=POST >
+    <a href="play" class="buttonEpic button-red"> PLAY </a>
+  </form>
+</div>
+{% endblock %}
