@@ -19,7 +19,7 @@ UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 DEBUG = True
-SECRET_KEY = 'bijur123'
+SECRET_KEY = 'XXXXX'
 PICKLED_FILE = 'pickled.ab'
 WINNERS_FILE = 'winners.ab'
 COUNTDOWN = 6
